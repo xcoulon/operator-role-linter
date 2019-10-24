@@ -1,0 +1,30 @@
+dist: trusty
+sudo: false
+
+language: go
+
+go:
+  - "1.13.x"
+  - tip
+
+os:
+  - linux
+  - osx
+
+env:
+  - GO111MODULE=on
+  
+matrix:
+  fast_finish: true
+  allow_failures:
+  - go: tip
+
+
+script:
+  # run the tests
+  - make test-with-coverage
+
+after_success:
+  - gover . coverage.txt
+  - bash <(curl -s https://codecov.io/bash)
+
