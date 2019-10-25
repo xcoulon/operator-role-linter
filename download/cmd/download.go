@@ -37,7 +37,7 @@ func Execute() {
 	var clusterURL string
 	var token string
 	var skippedGroups string
-	var outputDir string
+	var outputFile string
 
 	downloadCmd := &cobra.Command{
 		Use:   "download",
@@ -57,7 +57,12 @@ func Execute() {
 			if err != nil {
 				return err
 			}
-			return ioutil.WriteFile(filepath.Join(outputDir, "apiresources.yaml"), data, 0644)
+			outputDir := filepath.Dir(outputFile)
+			err = os.Mkdir(outputDir, os.FileMode(0755))
+			if err != nil && !os.IsExist(err) {
+				return err
+			}
+			return ioutil.WriteFile(outputFile, data, os.FileMode(0644))
 		},
 		SilenceUsage: true,
 	}
@@ -65,7 +70,7 @@ func Execute() {
 	flags.StringVar(&clusterURL, "cluster-url", "", "the URL of the cluster to call to download the API resources")
 	flags.StringVar(&token, "token", "", "the auth token (see 'oc whoami -t')")
 	flags.StringVar(&skippedGroups, "skippedGroups", "", "a comma-separated list of API groups to skip")
-	flags.StringVar(&outputDir, "output-dir", "o", "the output dir in which API resources (JSON files) will be downloaded")
+	flags.StringVar(&outputFile, "output-file", "", "the output dir in which API resources (JSON files) will be downloaded")
 	downloadCmd.MarkFlagRequired("cluster-url")
 	downloadCmd.MarkFlagRequired("token")
 	downloadCmd.MarkFlagRequired("output-dir")

@@ -15,7 +15,7 @@ func TestVerify(t *testing.T) {
 	ruleFile := "../../test/role.yaml"
 	crdsDir := "../../test/crds"
 	// when
-	errors, err := apiresources.Verify(ruleFile, crdsDir)
+	errors, err := apiresources.Verify(ruleFile, crdsDir, "openshift-4.2")
 	// then
 	require.NoError(t, err)
 	require.Len(t, errors, 5)

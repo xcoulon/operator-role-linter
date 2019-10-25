@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package cmd
+package main
 
 import (
 	"fmt"
@@ -23,19 +23,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ruleFile string
-var crdsPath string
-
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the verifyCmd.
-func Execute() {
+func main() {
+	var roleFile string
+	var crdsPath string
+	var clusterVersion string
 	verifyCmd := &cobra.Command{
 		Use:   "operator-role-linter",
 		Short: "verifies that the deploy/roles.yaml and deploy/cluster-roles.yaml are valid",
 		Long: `Verifies that the roles in the deploy/roles.yaml are namespaced roles, and
 	that roles in the deploy/cluster-roles.yaml are cluster roles.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			errors, err := apiresources.Verify(ruleFile, crdsPath)
+			errors, err := apiresources.Verify(roleFile, crdsPath, clusterVersion)
 			if err != nil {
 				return err
 			}
@@ -46,10 +44,11 @@ func Execute() {
 		},
 	}
 	flags := verifyCmd.Flags()
-	flags.StringVar(&ruleFile, "rbac", "", "the path to the main RBAC file to check")
-	flags.StringVar(&crdsPath, "crd", "", "the path to the directory with the custom CRDs to include")
-	// TODO: include path to CRDs
-	verifyCmd.MarkFlagRequired("path")
+	flags.StringVar(&roleFile, "role-file", "", "the path to the role/clusterrole to check")
+	flags.StringVar(&crdsPath, "crds-dir", "", "the path to the directory with the custom CRDs to include")
+	flags.StringVar(&clusterVersion, "cluster-version", "openshift-4.2", "the version of the target cluster (eg: 'openshift-4.2'")
+	verifyCmd.MarkFlagRequired("role-file")
+	verifyCmd.MarkFlagRequired("crds-dir")
 	if err := verifyCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)

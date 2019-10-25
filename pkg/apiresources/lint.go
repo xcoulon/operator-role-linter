@@ -14,8 +14,8 @@ import (
 
 // Verify verifies the file with the given `ruleFile`
 // returns an array of linter errors, or a single error if something really wrong happened
-func Verify(ruleFile, crdsDir string) ([]error, error) {
-	apiresources, err := loadAPIResources(crdsDir)
+func Verify(ruleFile, crdsDir, clusterVersion string) ([]error, error) {
+	apiresources, err := loadAPIResources(clusterVersion, crdsDir)
 
 	log.Debugf("now checking %s", ruleFile)
 	// now check each rule
@@ -85,7 +85,6 @@ func Verify(ruleFile, crdsDir string) ([]error, error) {
 						Group:    actualAPIGroup,
 						Resource: actualResource,
 					})
-					log.Errorf("group '%s' / resource '%s' is unknown", actualAPIGroup, actualResource)
 				} else {
 					errors = append(errors, UnknownGroupError{
 						Group: actualAPIGroup,
@@ -97,8 +96,8 @@ func Verify(ruleFile, crdsDir string) ([]error, error) {
 	return errors, nil
 }
 
-func loadAPIResources(crdsPath string) (APIResources, error) {
-	asset, err := data.Asset("apiresources.yaml")
+func loadAPIResources(clusterVersion, crdsPath string) (APIResources, error) {
+	asset, err := data.Asset(clusterVersion + ".yaml")
 	if err != nil {
 		return APIResources{}, err
 	}

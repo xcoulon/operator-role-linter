@@ -2000,6 +2000,58 @@ template.openshift.io:
     - patch
     - update
     - watch
+toolchain.dev.openshift.com:
+  masteruserrecords:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  masteruserrecords/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
+  nstemplatetiers:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  nstemplatetiers/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
+  usersignups:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  usersignups/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
 tuned.openshift.io:
   tuneds:
     namespaced: true
