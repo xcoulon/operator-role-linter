@@ -52,7 +52,6 @@ func Execute() {
 			if err != nil {
 				return err
 			}
-			// spew.Dump(resources)
 			// now, dump the resources into a YAML file
 			data, err := yaml.Marshal(resources)
 			if err != nil {
@@ -165,7 +164,6 @@ func process(url, token string, client *http.Client, data interface{}) error {
 	if err != nil {
 		return errors.Wrapf(err, "unable to process endpoint %s", url)
 	}
-	// spew.Dump(data)
 	return nil
 }
 
