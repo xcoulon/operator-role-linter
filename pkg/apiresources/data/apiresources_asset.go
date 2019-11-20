@@ -66,7 +66,7 @@ func apiresources_assetGo() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "apiresources_asset.go", size: 0, mode: os.FileMode(420), modTime: time.Unix(1571994477, 0)}
+	info := bindataFileInfo{name: "apiresources_asset.go", size: 0, mode: os.FileMode(420), modTime: time.Unix(1574152261, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -793,6 +793,12 @@ config.openshift.io:
     - create
     - update
     - watch
+  apiservers/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   authentications:
     namespaced: false
     verbs:
@@ -821,6 +827,12 @@ config.openshift.io:
     - create
     - update
     - watch
+  builds/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   clusteroperators:
     namespaced: false
     verbs:
@@ -883,6 +895,12 @@ config.openshift.io:
     - create
     - update
     - watch
+  dnses/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   featuregates:
     namespaced: false
     verbs:
@@ -894,6 +912,12 @@ config.openshift.io:
     - create
     - update
     - watch
+  featuregates/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   images:
     namespaced: false
     verbs:
@@ -933,6 +957,12 @@ config.openshift.io:
     - create
     - update
     - watch
+  ingresses/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   networks:
     namespaced: false
     verbs:
@@ -961,6 +991,23 @@ config.openshift.io:
     - get
     - patch
     - update
+  operatorhubs:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  operatorhubs/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   projects:
     namespaced: false
     verbs:
@@ -972,6 +1019,29 @@ config.openshift.io:
     - create
     - update
     - watch
+  projects/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+  proxies:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  proxies/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
   schedulers:
     namespaced: false
     verbs:
@@ -983,6 +1053,81 @@ config.openshift.io:
     - create
     - update
     - watch
+  schedulers/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+console.openshift.io:
+  consoleclidownloads:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  consoleclidownloads/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+  consoleexternalloglinks:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  consoleexternalloglinks/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+  consolelinks:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  consolelinks/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+  consolenotifications:
+    namespaced: false
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  consolenotifications/status:
+    namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
 coordination.k8s.io:
   leases:
     namespaced: true
@@ -995,7 +1140,7 @@ coordination.k8s.io:
     - patch
     - update
     - watch
-core.kubefed.k8s.io:
+core.kubefed.io:
   kubefedclusters:
     namespaced: true
     verbs:
@@ -1142,6 +1287,23 @@ extensions:
     - patch
     - update
 healthchecking.openshift.io:
+  machinedisruptionbudgets:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  machinedisruptionbudgets/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
   machinehealthchecks:
     namespaced: true
     verbs:
@@ -1153,6 +1315,12 @@ healthchecking.openshift.io:
     - create
     - update
     - watch
+  machinehealthchecks/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
 image.openshift.io:
   images:
     namespaced: false
@@ -1230,6 +1398,24 @@ imageregistry.operator.openshift.io:
     - watch
   configs/status:
     namespaced: false
+    verbs:
+    - get
+    - patch
+    - update
+ingress.operator.openshift.io:
+  dnsrecords:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  dnsrecords/status:
+    namespaced: true
     verbs:
     - get
     - patch
@@ -1378,6 +1564,24 @@ machineconfiguration.openshift.io:
     - create
     - update
     - watch
+metal3.io:
+  baremetalhosts:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  baremetalhosts/status:
+    namespaced: true
+    verbs:
+    - get
+    - patch
+    - update
 metrics.k8s.io:
   nodes:
     namespaced: false
@@ -1391,6 +1595,17 @@ metrics.k8s.io:
     - list
 monitoring.coreos.com:
   alertmanagers:
+    namespaced: true
+    verbs:
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - create
+    - update
+    - watch
+  podmonitors:
     namespaced: true
     verbs:
     - delete
@@ -1482,6 +1697,18 @@ network.openshift.io:
 networking.k8s.io:
   networkpolicies:
     namespaced: true
+    verbs:
+    - create
+    - delete
+    - deletecollection
+    - get
+    - list
+    - patch
+    - update
+    - watch
+node.k8s.io:
+  runtimeclasses:
+    namespaced: false
     verbs:
     - create
     - delete
@@ -1770,40 +1997,16 @@ operators.coreos.com:
     - create
     - update
     - watch
-  operatorgroups:
-    namespaced: true
-    verbs:
-    - delete
-    - deletecollection
-    - get
-    - list
-    - patch
-    - create
-    - update
-    - watch
-  operatorgroups/status:
-    namespaced: true
-    verbs:
-    - get
-    - patch
-    - update
-  operatorsources:
-    namespaced: true
-    verbs:
-    - delete
-    - deletecollection
-    - get
-    - list
-    - patch
-    - create
-    - update
-    - watch
 packages.operators.coreos.com:
   packagemanifests:
     namespaced: true
     verbs:
     - get
     - list
+  packagemanifests/icon:
+    namespaced: true
+    verbs:
+    - get
 policy:
   poddisruptionbudgets:
     namespaced: true
@@ -2073,58 +2276,6 @@ template.openshift.io:
     - patch
     - update
     - watch
-toolchain.dev.openshift.com:
-  masteruserrecords:
-    namespaced: true
-    verbs:
-    - delete
-    - deletecollection
-    - get
-    - list
-    - patch
-    - create
-    - update
-    - watch
-  masteruserrecords/status:
-    namespaced: true
-    verbs:
-    - get
-    - patch
-    - update
-  nstemplatetiers:
-    namespaced: true
-    verbs:
-    - delete
-    - deletecollection
-    - get
-    - list
-    - patch
-    - create
-    - update
-    - watch
-  nstemplatetiers/status:
-    namespaced: true
-    verbs:
-    - get
-    - patch
-    - update
-  usersignups:
-    namespaced: true
-    verbs:
-    - delete
-    - deletecollection
-    - get
-    - list
-    - patch
-    - create
-    - update
-    - watch
-  usersignups/status:
-    namespaced: true
-    verbs:
-    - get
-    - patch
-    - update
 tuned.openshift.io:
   tuneds:
     namespaced: true
@@ -2191,7 +2342,7 @@ func openshift42Yaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "openshift-4.2.yaml", size: 31363, mode: os.FileMode(420), modTime: time.Unix(1571993261, 0)}
+	info := bindataFileInfo{name: "openshift-4.2.yaml", size: 33623, mode: os.FileMode(420), modTime: time.Unix(1574152241, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

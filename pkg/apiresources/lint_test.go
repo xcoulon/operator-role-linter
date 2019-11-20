@@ -12,8 +12,8 @@ import (
 
 func TestVerify(t *testing.T) {
 	// given
-	ruleFile := "../../test/role.yaml"
-	crdsDir := "../../test/crds"
+	ruleFile := "../../tests/role.yaml"
+	crdsDir := "../../tests/crds"
 	// when
 	errors, err := apiresources.Verify(ruleFile, crdsDir, "openshift-4.2")
 	// then
