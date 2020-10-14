@@ -105,7 +105,6 @@ func TestDownload(t *testing.T) {
 					{
 						GroupVersion: "toolchain.dev.openshift.com/v1alpha1",
 						APIResources: []metav1.APIResource{
-							// whetever...
 						},
 					},
 				}, nil
