@@ -55,7 +55,6 @@ func Download(client discovery.DiscoveryInterface, skippedGroups string) (apires
 		if version, found := preferredGroupVersions[group]; !found || version != gv.Version {
 			continue
 		}
-		// fmt.Printf("apiResourceList: APIVersion=%s / GroupVersion=%s\n", apiResourceList.APIVersion, apiResourceList.GroupVersion)
 		fmt.Printf("group '%s': %s\n", group, gv.Version)
 		// spew.Dump(apiResourceList)
 		// check if group is skipped
