@@ -86,7 +86,6 @@ func contextConfig() (*restclient.Config, error) {
 	} else {
 		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
 	}
-	// flag.Parse()
 	// use the current context in kubeconfig
 	return clientcmd.BuildConfigFromFlags("", *kubeconfig)
 }
