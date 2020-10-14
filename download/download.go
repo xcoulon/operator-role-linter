@@ -56,7 +56,6 @@ func Download(client discovery.DiscoveryInterface, skippedGroups string) (apires
 			continue
 		}
 		fmt.Printf("group '%s': %s\n", group, gv.Version)
-		// spew.Dump(apiResourceList)
 		// check if group is skipped
 		if _, excluded := excludedGroups[group]; group != "" && excluded {
 			log.Infof("skipping group '%s'", group)
